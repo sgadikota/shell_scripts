@@ -11,27 +11,16 @@ else
   exit 1
 fi
 
-# Get the username (login).
-read -p 'Please enter your account name: ' ACCOUNT_NAME
+# Make sure provide account name as argument
 
-# prints empty line
-echo
-
-# prints accnt name entered
-echo "***********  Entered account name is: "${ACCOUNT_NAME}""
-
-# Make sure provide account name.
-# type -a test
-# help test
-# check usage of -z and -n if the value of string is null or not.
-
-if [[ -z "${ACCOUNT_NAME}" ]]
+if [[ "${#}" -lt 1 ]]
 then
   echo "U have not passed account name, please see the usage below"
   echo "Usage: ${0} ACCOUNT_NAME [ACCOUNT_NAME]..."
   exit 1
 fi
 
+ACCOUNT_NAME=${*}
 
 # getting username as first word from account name entered
 USER_NAME="$(echo ${ACCOUNT_NAME} | head -n1 | awk '{print $1;}')"
@@ -46,7 +35,7 @@ useradd -c "${COMMENT}" -m ${USER_NAME}
 
 # Use the current date/time as the basis for the password.
 PASSWORD=$(date +%s)
-echo "Password: ${PASSWORD}"
+echo "Password generated: ${PASSWORD}"
 
 # Set the password for the user.
 echo ${PASSWORD} | passwd --stdin ${USER_NAME}
