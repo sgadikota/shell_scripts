@@ -54,6 +54,9 @@ else
   echo "User account is created"
 fi
 
+# Force password change on first login
+passwd -e ${USER_NAME}
+
 # Display the username, password, and the host where the user was created.
 echo username: "${USER_NAME}"
 echo password: "${PASSWORD}"
