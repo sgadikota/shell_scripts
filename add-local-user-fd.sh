@@ -5,6 +5,9 @@
 # to seperate stdout and stderr run this way
 # sudo ./add-newer-local-user.sh 1>std.out 2>std.err
 # ******* send the errors to stderr by using >&2 along with echo or where needed
+# *** check this link when to use &> and 2>&1
+# https://askubuntu.com/questions/635065/what-is-the-differences-between-and-21
+# https://unix.stackexchange.com/questions/443823/what-is-the-difference-between-2-and-2
 # This script is to create a user when we run this script.
 
 # Make sure the script is being executed with superuser privileges. else it will return exit status 1
